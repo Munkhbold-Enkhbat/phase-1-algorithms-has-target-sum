@@ -1,11 +1,19 @@
+// let hasTargetSum = (array, target) => {
+//   // write your algorithm here
+//   for(let i = 0; i < array.length; i++) {
+//     for(let j = i + 1; j < array.length; j++) {
+//       if( array[i] + array[j] === target) return true
+//     }
+//   }
+//   return false
+// }
+
 let hasTargetSum = (array, target) => {
-  // let foundPairs = false
+  let seenNumbers = {}
   for(let i = 0; i < array.length; i++) {
-    for(let j = 0; j < array.length; j++) {
-      if(i !== j && array[i] + array[j] === target){
-        return true
-      }
-    }
+    const complement = target - array[i]
+    if(seenNumbers[complement]) return true
+    seenNumbers[array[i]] = true
   }
   return false
 }
@@ -19,7 +27,7 @@ let hasTargetSum = (array, target) => {
   Add your pseudocode here
   //every integer of array
   // every integer of other integers in array 
-  //  if they are not same num and their sum is equal to target 
+  //  if their sum is equal to target 
   //   return true
   //  else 
   //   return false
